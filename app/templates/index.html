@@ -26,8 +26,13 @@
         <div class="container-fluid" style="color:white">
             Content:
         <a href="{{ url_for('index') }}">Home</a>
-        <a href="{{ url_for('login') }}">Login</a>
         <a href="{{ url_for('gamepage') }}">Game</a>
+        {% if current_user.is_anonymous %}
+        <a href="{{ url_for('login') }}">Login</a>
+        {% else %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+        {% endif %}
+        <a href="{{ url_for('gaming') }}">Game</a>
         </div>
     </nav>
 
@@ -35,12 +40,15 @@
         <p>This is going to be the div for leaderboard</p>
     </div>
     <div class="col-sm-8">
-
+        
     </div>
     <form action="{{ url_for('login') }}">
         <input type="submit" value="Go to Google">
     </form>
     {% block content %}{% endblock %}
-
+    <h1>Hi, {{ current_user.username }}!</h1>
+    {% for post in posts %}
+    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
+    {% endfor %}
 </body>
 </html>
