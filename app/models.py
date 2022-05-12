@@ -34,12 +34,3 @@ class Post(db.Model):
     def __repr__(self):
         return '<Post {}>'.format(self.body)
 
-
-# Create the Cities Database
-class Cities(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    cityname = db.Column(db.String(50))
-    countryCode = db.Column(db.String(4), default='ASD')
-
-    def __repr__(self):
-        return '<Country is {}>'.format(self.cityname)

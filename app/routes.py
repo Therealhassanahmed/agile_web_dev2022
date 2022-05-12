@@ -2,7 +2,7 @@ from app import app, db
 from app.forms import RegistrationForm
 from flask import render_template, flash, redirect, request, url_for
 from app.forms import LoginForm
-from app.models import Cities, User
+from app.models import User
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 
@@ -36,27 +36,11 @@ def login():
 def gaming():
     return render_template("gaming.html")
 
-@app.route('/gamepage')
-def gamepage():
-    return render_template("gamepage.html")
-
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
 
-@app.route('/countries', methods=['POST','GET'])
-def countries():
-    if request.method == "POST":
-        friend_name = request.form['name']
-        new_friend = Cities(cityname=friend_name)
-        # Push to database
-        db.session.add(new_friend)
-        db.session.commit()
-        return redirect('/countries')
-    else:
-        friends = Cities.query.order_by(Cities.id)
-        return render_template("countries.html", friends=friends)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

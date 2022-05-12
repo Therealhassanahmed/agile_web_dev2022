@@ -26,7 +26,6 @@
         <div class="container-fluid" style="color:white">
             Content:
         <a href="{{ url_for('index') }}">Home</a>
-        <a href="{{ url_for('gamepage') }}">Game</a>
         {% if current_user.is_anonymous %}
         <a href="{{ url_for('login') }}">Login</a>
         {% else %}
