@@ -7,35 +7,55 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Document</title>
     <script>
+        var cities = {{cities()|tojson|safe}}
+        var countries = {{countries()|tojson|safe}}
+        var populations = {{populations()|tojson|safe}}
+        let x = 0
+        let y = Math.floor((Math.random() * cities.length));
+        let z = Math.floor((Math.random() * cities.length));
+        while (y == z) {
+                    z = Math.floor((Math.random() * cities.length));
+        }
         $(document).ready(function(){
-            let x = 0
+            document.getElementById("num_1").innerHTML = cities[y] + ": " + populations[y].toString();
+            document.getElementById("num_2").innerHTML = cities[z] + ": ?";
             $("#Higher_Button").click(function(){
-                if ($("#num_1").text() <= $("#num_2").text()) {
+                if (populations[y] <= populations[z]) {
                     x += 1
                     document.getElementById("count").innerHTML = x;
-                    document.getElementById("num_1").innerHTML = document.getElementById("num_2").innerHTML;
+                    document.getElementById("num_1").innerHTML = cities[z] + ": " + populations[z].toString();
                 }
                 else {
                     alert("Game over you scored: " + x.toString())
+                    console.log(populations[z])
                     x = 0;
                     document.getElementById("count").innerHTML = x;
-                    document.getElementById("num_1").innerHTML = document.getElementById("num_2").innerHTML;
+                    document.getElementById("num_1").innerHTML = cities[z] + ": " + populations[z].toString();
                 }
-                document.getElementById("num_2").innerHTML = Math.floor(Math.random() * 10) + 1;
+                y = z;
+                while (y == z) {
+                    z = Math.floor((Math.random() * cities.length));
+                }
+                document.getElementById("num_2").innerHTML = cities[z] + ": ?";
             });
             $("#Lower_Button").click(function(){
-                if ($("#num_1").text() >= $("#num_2").text()) {
+                if (populations[z] <= populations[y]) {
                     x += 1
                     document.getElementById("count").innerHTML = x;
-                    document.getElementById("num_1").innerHTML = document.getElementById("num_2").innerHTML;
+                    document.getElementById("num_1").innerHTML = cities[z] + ": " + populations[z].toString();
                 }
                 else {
                     alert("Game over you scored: " + x.toString())
+                    console.log(populations[z])
                     x = 0;
                     document.getElementById("count").innerHTML = x;
-                    document.getElementById("num_1").innerHTML = document.getElementById("num_2").innerHTML;
+                    document.getElementById("num_1").innerHTML = cities[z] + ": " + populations[z].toString();
                 }
-                document.getElementById("num_2").innerHTML = Math.floor(Math.random() * 10) + 1;
+                y = z;
+                while (y == z) {
+                    z = Math.floor((Math.random() * cities.length));
+                }
+                document.getElementById("num_2").innerHTML = cities[z] + ": ?";
             });
         });
     </script>
@@ -45,8 +65,8 @@
         This will be where the game goes
     </h1>
     <p>So this is the end</p>
-    <h1 id="num_1" style="font-size: 40px;">5</h1>
-    <h1 id="num_2" style="font-size: 40px;">7</h1>
+    <h1 id="num_1" style="font-size: 40px;"></h1>
+    <h1 id="num_2" style="font-size: 40px;"></h1>
     <h1 id="count" style="font-size: 40px;">0</h1>
 
 

@@ -2,9 +2,10 @@ from app import app, db
 from app.forms import RegistrationForm
 from flask import render_template, flash, redirect, request, url_for
 from app.forms import LoginForm
-from app.models import User
+from app.models import User, Location
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
+import random
 
 
 
@@ -34,7 +35,26 @@ def login():
 
 @app.route('/gaming')
 def gaming():
-    return render_template("gaming.html")
+    location = Location.query.all()
+    return render_template("gaming.html", location=location, cities=cities, countries=countries, populations=populations)
+def cities():
+    lst = []
+    location = Location.query.all()
+    for x in range(len(location)):
+        lst.append(location[x].City)
+    return lst
+def countries():
+    lst = []
+    location = Location.query.all()
+    for x in range(len(location)):
+        lst.append(location[x].Country)
+    return lst
+def populations():
+    lst = []
+    location = Location.query.all()
+    for x in range(len(location)):
+        lst.append(location[x].Population)
+    return lst
 
 @app.route('/logout')
 def logout():
