@@ -13,6 +13,9 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
+    high_score = db.Column(db.Integer)
+    average_score = db.Column(db.Float)
+    number_of_plays = db.Column(db.Integer)
     
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
