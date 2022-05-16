@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,14 +15,7 @@
 </head>
 
 <body>
-    <header>
-        <div class="container-fluid">
-            <h1 style="color:white; font-family:'Courier New', Courier, monospace">
-                Higher or Lower Game
-            </h1>
-        </div>
-    </header>
-    
+    <!--
     <nav>
         <div class="container-fluid" style="color:white">
             Content:
@@ -34,17 +28,67 @@
         <a href="{{ url_for('gaming') }}">Game</a>
         </div>
     </nav>
+    -->
 
-    <div class="col-sm-2" id="leaderboard" style="color:white; border-style: solid; border-color: white">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#" style="padding-right:20px;">Higher Or Lower</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('gaming') }}">Play</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">LeaderBoards</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+            </li>
+              <li class="nav-item">
+               <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container-fluid">
+            <p class="cent-titleA">
+                Higher or Lower
+            </p>
+            <p class="cent-titleB">
+                Cities Edition
+            </p>
+        </div>
+    </header>
+    <!--
+        <div class="col-sm-2" id="leaderboard" style="color:white; border-style: solid; border-color: white">
         <p>This is going to be the div for leaderboard</p>
     </div>
-    <div class="col-sm-8">
-        
-    </div>
+    -->
+
+    <!--
     <form action="{{ url_for('login') }}">
         <input type="submit" value="Go to Google">
     </form>
-    {% block content %}{% endblock %}
-    <h1>Hi, {{ current_user.username }}!</h1>
+    -->
+
+    <div class="login-box">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div class="img-move-start">
+        <div class="img-move">
+            <img src="../static/images/blah.jpeg">
+        </div>
+    </div>
+
+    
 </body>
 </html>
