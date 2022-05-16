@@ -37,7 +37,7 @@
 
     <div class="col-sm-2" id="leaderboard" style="color:white; border-style: solid; border-color: white">
         <p>This is going to be the div for leaderboard</p>
-        <table class="leaderboard" style="width:100%">
+        <table class="leaderboard" id="leader_table" style="width:100%">
         {% for user in user_leaderboard %}
         {% if user.high_score is number %}
         <tr class="leaderboard">
@@ -45,6 +45,7 @@
             <th class="leaderboard">{{ user.high_score }}</th>
         </tr>
         {% endif %}
+        
         {% endfor %}
     </table>
     </div>

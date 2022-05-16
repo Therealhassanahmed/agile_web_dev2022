@@ -12,7 +12,7 @@ from werkzeug.urls import url_parse
 @app.route('/index')
 @login_required
 def index():
-    user_leaderboard = User.query.order_by(User.high_score.desc())
+    user_leaderboard = User.query.order_by(User.high_score.desc())[0:4]
     return render_template("index.html", title='Home Page', user_leaderboard=user_leaderboard)
 
 @app.route('/login', methods=['GET', 'POST'])
