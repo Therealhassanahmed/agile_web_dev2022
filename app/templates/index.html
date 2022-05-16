@@ -37,13 +37,25 @@
 
     <div class="col-sm-2" id="leaderboard" style="color:white; border-style: solid; border-color: white">
         <p>This is going to be the div for leaderboard</p>
+        <table class="leaderboard" style="width:100%">
+        {% for user in user_leaderboard %}
+        {% if user.high_score is number %}
+        <tr class="leaderboard">
+            <th class="leaderboard">{{ user.username }}</th>
+            <th class="leaderboard">{{ user.high_score }}</th>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
     </div>
     <div class="col-sm-8">
         
     </div>
+    <br>
     <form action="{{ url_for('login') }}">
         <input type="submit" value="Go to Google">
     </form>
+    <br>
     {% block content %}{% endblock %}
     <h1>Hi, {{ current_user.username }}!</h1>
 </body>
