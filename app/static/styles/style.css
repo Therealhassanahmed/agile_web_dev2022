@@ -32,24 +32,22 @@ body {
     text-align: center;
 }
 
-.img-move-start {
-    display: flex;
-    height: 226px;
-    width: 223px;
-    position: absolute;
-    left:80px;
-    top:2px;
-    /*transform: translate(60px, 200px);*/
-}
-
-.img-move {
-    height: 226px;
-    width: 223px;
-    position:relative;
-
-    transition: 2s;
-}
-
-.img-move:hover {
-    transform: translate(200px, 100px);
+.bingbong {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position:absolute;
+    top: 10%;
+    right: 10%;
+    animation-name: example;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+ }
+  
+ @keyframes example {
+    0%   {background-color:red; left:10%; top:1%;}
+    25%  {background-color:yellow; left:90%; top:1%;}
+    50%  {background-color:blue; left:90%; top:90%;}
+    75%  {background-color:green; left:10%; top:90%;}
+    100% {background-color:red; left:10%; top:1%;}
 }
