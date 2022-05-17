@@ -13,6 +13,7 @@
         let x = 0
         let y = Math.floor((Math.random() * cities.length));
         let z = Math.floor((Math.random() * cities.length));
+        let skips = 3
         while (y == z) {
                     z = Math.floor((Math.random() * cities.length));
         }
@@ -27,10 +28,11 @@
                 }
                 else {
                     alert("Game over you scored: " + x.toString())
-                    console.log(populations[z])
                     x = 0;
                     document.getElementById("count").innerHTML = x;
                     document.getElementById("num_1").innerHTML = cities[z] + ": " + populations[z].toString();
+                    skips = 3;
+                    document.getElementById("Skip").innerHTML = "Skip (" + skips.toString() + " remaining)";
                 }
                 y = z;
                 while (y == z) {
@@ -46,16 +48,29 @@
                 }
                 else {
                     alert("Game over you scored: " + x.toString())
-                    console.log(populations[z])
                     x = 0;
                     document.getElementById("count").innerHTML = x;
                     document.getElementById("num_1").innerHTML = cities[z] + ": " + populations[z].toString();
+                    skips = 3;
+                    document.getElementById("Skip").innerHTML = "Skip (" + skips.toString() + " remaining)";
                 }
                 y = z;
                 while (y == z) {
                     z = Math.floor((Math.random() * cities.length));
                 }
                 document.getElementById("num_2").innerHTML = cities[z] + ": ?";
+            });
+            $("#Skip").click(function(){
+                if (skips > 0) {
+                document.getElementById("num_1").innerHTML = cities[z] + ": " + populations[z].toString();
+                y = z;
+                while (y == z) {
+                    z = Math.floor((Math.random() * cities.length));
+                }
+                document.getElementById("num_2").innerHTML = cities[z] + ": ?";
+                skips = skips - 1;
+                document.getElementById("Skip").innerHTML = "Skip (" + skips.toString() + " remaining)";
+                }
             });
         });
     </script>
@@ -72,6 +87,7 @@
 
     <button id="Higher_Button">Higher</button>
     <button id="Lower_Button">Lower</button>
+    <button id="Skip">Skip (3 remaining)</button>
     <div class="col-sm-5" id="city_1">---------------------</div>
     <div class="col-sm-5" id="city_2">---------------------</div>
 </body>
