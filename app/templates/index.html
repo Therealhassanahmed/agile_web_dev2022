@@ -11,58 +11,71 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
     <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/purple_icon.png') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Higher Or Lower Game</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm fixed-top navbar-light">
-        <div class="container" style="margin-left: 50px;">
-            <a class="navbar-brand" href="{{ url_for('index') }}">Home</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbar1">
-                <ul class="navbar-nav" style="margin-right: 1300px;">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url_for('gaming') }}">Play</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">LeaderBoards</a>
-                    </li>
+    
+    <div>
+        <div class="nav-bar">
+            <div class="hilo-logo">
+                <img src="../static/images/Higher_Or_Lower_logo.webp">
+            </div>
+            <div class="nav-links" id="nav-links">
+                <i class="fa fa-close" onclick="closeMenu()"></i>
+                <ul>
+                    <a href="{{ url_for('index') }}"><li>HOME</li></a>
+                    <a href="{{ url_for('gaming') }}"><li>PLAY</li></a>
+                    <a href="#"><li>LEADERBOARDS</li></a>
                 </ul>
-                {% if current_user.is_anonymous %}
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url_for('login') }}">Login</a>
-                    </li>
-                </ul>
-                {% else %}
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
-                    </li>
-                </ul>
-                {% endif %}
+                <button type="button" class="btn">LOGIN</button>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </div>
+        <div class="banner-title">
+            <h1>The Higher or Lower Game.<br><span>Cities Edition.</span></h1>
+            <button type="button" class="btn">SOME BUTTON</button>
+        </div>
+        <div class="vertical-bar">
+            <div class="search-icon">
+                <i class="fa fa-th-list"></i>
+                <i class="fa fa-search"></i>
+            </div>
+            <div class="social-icons">
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-instagram"></i>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-pinterest"></i>
             </div>
         </div>
-    </nav>
-
-    <header>
-        <div class="container-fluid">
-            <p class="cent-titleA">
-                Higher or Lower
-            </p>
-            <p class="cent-titleB">
-                Cities Edition
-            </p>
+        <div class="notifications">
+            <div class="contents">
+                <small>COUNTRY OF THE DAY!</small>
+            </div>
+            <div class="notification-img">
+                <img src="../static/images/4x3/ad.svg"
+            </div>
         </div>
-    </header>
+    </div>
+
+    <script>
+    var show = document.getElementById("nav-links");
+    function showMenu() {
+        show.style.right = "0";
+    }
+    function closeMenu() {
+        show.style.right = "-200px";
+    }
+    </script>
+    
     <!--
         <div class="col-sm-2" id="leaderboard" style="color:white; border-style: solid; border-color: white">
         <p>This is going to be the div for leaderboard</p>
     </div>
     -->
 
+    <!--
     <div class="login-box">
         {% block content %}{% endblock %}
     </div>
@@ -70,15 +83,7 @@
     <div class="bingbong">
 
     </div>
-
-    <div style="z-index: 0;">
-        <img src="../static/images/4x3/ao.svg" class="flag-left">;
-    </div>
-
-    <div style="z-index: 0;">
-        <img src="../static/images/4x3/sh.svg" class="flag-right">;
-    </div>
-
+    -->
     
 </body>
 </html>
