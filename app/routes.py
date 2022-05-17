@@ -35,7 +35,26 @@ def login():
 
 @app.route('/gaming')
 def gaming():
-    return render_template("gaming.html")
+    location = Location.query.all()
+    return render_template("gaming.html", location=location, cities=cities, countries=countries, populations=populations)
+def cities():
+    lst = []
+    location = Location.query.all()
+    for x in range(len(location)):
+        lst.append(location[x].City)
+    return lst
+def countries():
+    lst = []
+    location = Location.query.all()
+    for x in range(len(location)):
+        lst.append(location[x].Country)
+    return lst
+def populations():
+    lst = []
+    location = Location.query.all()
+    for x in range(len(location)):
+        lst.append(location[x].Population)
+    return lst
 
 @app.route('/logout')
 def logout():
@@ -49,7 +68,7 @@ def register():
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
+        user = User(username=form.username.data, email=form.email.data, high_score=0, average_score=0.0, number_of_plays=0)
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()

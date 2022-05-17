@@ -36,16 +36,21 @@
     </nav>
 
     <div class="col-sm-2" id="leaderboard" style="color:white; border-style: solid; border-color: white">
-        <p>This is going to be the div for leaderboard</p>
+        <p>Leaderboard:</p>
         <table class="leaderboard" id="leader_table" style="width:100%">
-        {% for user in user_leaderboard %}
-        {% if user.high_score is number %}
-        <tr class="leaderboard">
-            <th class="leaderboard">{{ user.username }}</th>
-            <th class="leaderboard">{{ user.high_score }}</th>
-            <th class="leaderboard">{{ average_score }}</th>
-        </tr>
-        {% endif %}
+            <tr>
+                <th>Username</th>
+                <th>High Score</th>
+                <th>Average Score</th>
+            </tr>
+            {% for user in user_leaderboard %}
+            {% if user.high_score is number %}
+            <tr class="leaderboard">
+                <td class="leaderboard">{{ user.username }}</td>
+                <td class="leaderboard">{{ user.high_score }}</td>
+                <td class="leaderboard">{{ user.average_score }}</td>
+            </tr>
+            {% endif %}
         
         {% endfor %}
     </table>
