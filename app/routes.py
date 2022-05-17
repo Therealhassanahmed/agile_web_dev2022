@@ -2,10 +2,9 @@ from app import app, db
 from app.forms import RegistrationForm
 from flask import render_template, flash, redirect, request, url_for
 from app.forms import LoginForm
-from app.models import User, Location
+from app.models import User
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
-import random
 
 
 
@@ -13,7 +12,8 @@ import random
 @app.route('/index')
 @login_required
 def index():
-    return render_template("index.html", title='Home Page')
+    user_leaderboard = User.query.order_by(User.high_score.desc())[0:4]
+    return render_template("index.html", title='Home Page', user_leaderboard=user_leaderboard)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -35,26 +35,7 @@ def login():
 
 @app.route('/gaming')
 def gaming():
-    location = Location.query.all()
-    return render_template("gaming.html", location=location, cities=cities, countries=countries, populations=populations)
-def cities():
-    lst = []
-    location = Location.query.all()
-    for x in range(len(location)):
-        lst.append(location[x].City)
-    return lst
-def countries():
-    lst = []
-    location = Location.query.all()
-    for x in range(len(location)):
-        lst.append(location[x].Country)
-    return lst
-def populations():
-    lst = []
-    location = Location.query.all()
-    for x in range(len(location)):
-        lst.append(location[x].Population)
-    return lst
+    return render_template("gaming.html")
 
 @app.route('/logout')
 def logout():
@@ -68,7 +49,7 @@ def register():
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data, high_score=0, average_score=0.0, number_of_plays=0)
+        user = User(username=form.username.data, email=form.email.data)
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
