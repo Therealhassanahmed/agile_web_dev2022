@@ -158,6 +158,10 @@
     display: none;
 }
 
+#leader-board-small {
+    display: none;
+}
+
 @media (max-width: 700px) {
     .vertical-bar{
         display: none;
@@ -204,5 +208,14 @@
         float: none;
         margin-left: 25px;
         margin-right: 10px;
+    }
+    #leader-board-small{
+        display: block;
+    }
+    #leader-board-big{
+        display: none;
+    }
+    #close-icon-small-leader{
+        display: none;
     }
 }

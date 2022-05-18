@@ -26,19 +26,21 @@
 <body>
     
     <div class="every">
-        <div class="nav-bar">
+        <div class="nav-bar" id="nav-bar">
             <div class="hilo-logo">
                 <img src="../static/images/Higher_Or_Lower_logo.webp">
             </div>
             <div class="nav-links" id="nav-links">
-                <i class="fa fa-close" onclick="closeMenu()"></i>
-                <ul>
+                <i class="fa fa-close" onclick="closeMenu()" id="close-icon-small"></i>
+                <i class="fa fa-close" onclick="dont_show_Leader()" id="close-icon-small-leader"></i>
+                <ul id="nav-links-small">
                     <a href="{{ url_for('index') }}"><li>HOME</li></a>
                     <a href="{{ url_for('gaming') }}"><li>PLAY</li></a>
-                    <a href="#"><li>LEADERBOARDS</li></a>
+                    <a onclick="showLeader()" style="color: white; text-decoration: none; cursor: pointer;" id="leader-board-big"><li>LEADERBOARDS</li></a>
+                    <a onclick="show_Leader()" style="color: white; text-decoration: none; cursor: pointer;" id="leader-board-small"><li>LEADERBOARDS</li></a>
                 </ul>
                 <!--need to implement link for login page >>> causing jinja to fail-->
-                <button type="button" class="btn">LOGIN</button>
+                <button type="button" class="btn" id="login-button-small">LOGIN</button>
             </div>
             <i class="fa fa-bars" onclick="showMenu()"></i>
         </div>
@@ -93,15 +95,16 @@
         show.style.right = "-200px";
     }
 
-    var bar = document.getElementById("vertical-bar")
-    var list_icon = document.getElementById("list-icon")
-    var leader_title = document.getElementById("leader-board-title")
-    var close_icon = document.getElementById("close-icon")
-    var leader_board_table = document.getElementById("leader-board-table")
+    var bar = document.getElementById("vertical-bar");
+    var list_icon = document.getElementById("list-icon");
+    var leader_title = document.getElementById("leader-board-title");
+    var close_icon = document.getElementById("close-icon");
+    var leader_board_table = document.getElementById("leader-board-table");
+    var close_icon_small_leader = document.getElementById("close-icon-small-leader");
+    
     function showLeader() {
         bar.style.width = "65%";
         list_icon.style.display = "none";
-        //leader_title.style.display = "none";
         leader_title.style.display = "inline-block";
         leader_title.style.writingMode = "horizontal-tb";
         close_icon.style.display = "block";
@@ -114,6 +117,30 @@
         leader_title.style.display = "block";
         leader_title.style.writingMode = "vertical-rl";
         leader_board_table.style.display = "none";
+
+    }
+    var nav_links_small = document.getElementById("nav-links-small");
+    var close_icon_small = document.getElementById("close-icon-small");
+    var login_button_small = document.getElementById("login-button-small");
+    var leader_table = document.getElementById("leader_table");
+
+    function show_Leader() {
+        show.style.width = "100%";
+        close_icon_small.style.display = "none";
+        nav_links_small.style.display = "none";
+        login_button_small.style.display = "none";
+        leader_table.style.display = "block";
+        close_icon_small_leader.style.display = "block";
+    }
+    function dont_show_Leader() {
+        close_icon_small_leader.style.display = "none";
+        show.style.right = "0";
+        show.style.width = "200px";
+        close_icon_small.style.display = "block";
+        nav_links_small.style.display = "block";
+        nav_links_small.style.marginLeft = "-40px";
+        nav_links_small.style.marginBottom = "-2px";
+        login_button_small.style.display = "block";
     }
 
     window.onload = chooseFlag;
