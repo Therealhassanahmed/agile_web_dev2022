@@ -36,6 +36,17 @@ def login():
 def gaming():
     location = Location.query.all()
     return render_template("gaming.html", location=location, cities=cities, countries=countries, populations=populations)
+
+@app.route('/normal')
+def normal():
+    location = Location.query.all()
+    return render_template("normal.html", location=location, cities=cities, countries=countries, populations=populations)
+
+@app.route('/easy')
+def easy():
+    location = Location.query.all()
+    return render_template("easy.html", location=location, cities=cities, countries=countries, populations=populations)
+
 def cities():
     lst = []
     location = Location.query.all()
@@ -59,7 +70,6 @@ def populations():
 def logout():
     logout_user()
     return redirect(url_for('index'))
-
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
