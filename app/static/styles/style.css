@@ -218,4 +218,9 @@
     #close-icon-small-leader{
         display: none;
     }
+    #leader-board-table-small{
+        display: none;
+        color: white;
+        margin: auto;
+    }
 }
