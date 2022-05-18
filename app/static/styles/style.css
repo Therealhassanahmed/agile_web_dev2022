@@ -1,69 +1,10 @@
-
-body {
-    background-color: blue;
-}
-
-
-.cent-titleA {
-    text-align: center;
-    font-family:'Courier New', 'Courier', "monospace";
-    font-size: 100px;
-}
-
-.cent-titleB {
-    text-align: center;
-    font-family:'Courier New', 'Courier', "monospace";
-    font-size: 75px;
-}
-
-.login-box {
-    height: 400px;
-    width: 30%;
-    border-radius: 10px;
-    border-width: 3px;
-    border-color: black;
-    background-color: aquamarine;
-    margin: auto;
-    padding: 25px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    position:relative;
-    z-index: 9;
-}
-
-.sign-in-center {
-    text-align: center;
-}
-
-.flag-left {
-    height:150px; 
-    width:200px; 
-    position:absolute; 
-    left:50px; 
-    top: 45%;
-    animation-name: lefty;
-    animation-duration: 3s;
-    z-index: 0;
-}
-
-.flag-right {
-    height:150px; 
-    width:200px; 
-    position:absolute; 
-    right:50px; 
-    top: 45%;
-    animation-name: righty;
-    animation-duration: 3s;
-    z-index: 0;
-}
-
-@keyframes lefty {
-    0%   {left:50px;}
-    100%  {left: 50%;}
-}
-
-@keyframes righty {
-    0%   {right:50px;}
-    100%  {right: 50%;}
+.every {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url(../images/world_map.jpg);
+    background-position: center;
+    background-size: cover;
+    overflow-x: hidden;
+    position: relative;
 }
 
 .highlow {
@@ -124,6 +65,16 @@ body {
     cursor: pointer;
 }
 
+.reg-button {
+    text-decoration: none;
+    color: black;
+}
+
+.reg-button:hover {
+    text-decoration: none;
+    color: black;
+}
+
 .nav-links .btn {
     float: right;
 }
@@ -147,7 +98,7 @@ body {
     background: black;
     top: 0;
     left: 0;
-    position: absolute
+    position: absolute;
 }
 
 .search-icon {
@@ -171,6 +122,11 @@ body {
     padding-top: 27%;
     bottom: 0;
     position: absolute;
+}
+
+.social-icons .leader {
+    margin: 0;
+    font-weight: bolder;
 }
 
 .social-icons .fa {
