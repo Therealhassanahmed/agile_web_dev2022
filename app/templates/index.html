@@ -50,9 +50,28 @@
         <div class="vertical-bar" id="vertical-bar">
             <i class="fa fa-th-list" onclick="showLeader()" id="list-icon"></i>
             <i class="fa fa-close" onclick="dont_showLeader()" id="close-icon"></i>
-            <p id="leader-board-title">
+            <p class="leader-board-title" id="leader-board-title">
                 LEADERBOARDS
             </p>
+            <div class="leader-board-table" id="leader-board-table">
+                <table class="leaderboard" id="leader_table" style="width:100%">
+                    <tr>
+                        <th>Username</th>
+                        <th>High Score</th>
+                        <th>Average Score</th>
+                    </tr>
+                    {% for user in user_leaderboard %}
+                    {% if user.high_score is number %}
+                    <tr class="leaderboard">
+                        <td class="leaderboard">{{ user.username }}</td>
+                        <td class="leaderboard">{{ user.high_score }}</td>
+                        <td class="leaderboard">{{ user.average_score }}</td>
+                    </tr>
+                    {% endif %}
+                
+                {% endfor %}
+            </table>
+            </div>
         </div>
         
         <div class="notifications">
@@ -78,19 +97,23 @@
     var list_icon = document.getElementById("list-icon")
     var leader_title = document.getElementById("leader-board-title")
     var close_icon = document.getElementById("close-icon")
+    var leader_board_table = document.getElementById("leader-board-table")
     function showLeader() {
-        bar.style.width = "50%";
+        bar.style.width = "65%";
         list_icon.style.display = "none";
-        leader_title.style.display = "none";
+        //leader_title.style.display = "none";
+        leader_title.style.display = "inline-block";
+        leader_title.style.writingMode = "horizontal-tb";
         close_icon.style.display = "block";
-
-
+        leader_board_table.style.display = "block";
     }
     function dont_showLeader() {
         bar.style.width = "80px";
         list_icon.style.display = "block";
         close_icon.style.display = "none";
         leader_title.style.display = "block";
+        leader_title.style.writingMode = "vertical-rl";
+        leader_board_table.style.display = "none";
     }
 
     window.onload = chooseFlag;

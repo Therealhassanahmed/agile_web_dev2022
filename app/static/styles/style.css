@@ -82,6 +82,7 @@
 .banner-title {
     margin: 80px 130px;
     color: white;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .banner-title h1 {
@@ -100,7 +101,7 @@
     top: 0;
     left: 0;
     position: absolute;
-    transition: 0.3s;
+    transition: 0.5s;
 }
 
 .vertical-bar .fa {
@@ -120,6 +121,10 @@
     font-size: 50px;
     letter-spacing: 10px;
     transition: 0.2s;
+}
+
+.vertical-bar .leader-board-table {
+    display: none;
 }
 
 #close-icon {
