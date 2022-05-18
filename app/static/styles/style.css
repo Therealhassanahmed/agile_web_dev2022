@@ -95,47 +95,35 @@
 
 .vertical-bar {
     height: 100%;
-    background: black;
+    width: 80px;
+    background: yellow;
     top: 0;
     left: 0;
     position: absolute;
+    transition: 0.3s;
 }
 
-.search-icon {
-    height: 60%;
-    width: 80px;
-}
-
-.search-icon .fa {
+.vertical-bar .fa {
     margin: 45px 23px;
     display: block;
-    color: white;
+    color: black;
     font-size: 30px;
     cursor: pointer;
 }
 
-.social-icons {
-    height: 35%;
-    width: 80px;
-    background: yellow;
-    text-align: center;
-    padding-top: 27%;
-    bottom: 0;
-    position: absolute;
-}
-
-.social-icons .leader {
-    margin: 0;
+.vertical-bar p {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    text-align: right;
+    margin-left: 2px;
     font-weight: bolder;
+    font-size: 50px;
+    letter-spacing: 10px;
+    transition: 0.2s;
 }
 
-.social-icons .fa {
-    margin: 15px 23px;
-    display: block;
-    padding: 8px;
-    border: 1px solid black;
-    border-radius: 50%;
-    cursor: pointer;
+#close-icon {
+    display: none;
 }
 
 .notifications {

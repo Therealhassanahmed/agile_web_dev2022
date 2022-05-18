@@ -46,31 +46,21 @@
             <h1>The Higher or Lower Game.<br><span>Cities Edition.</span></h1>
             <button type="button" class="btn"><a href="{{ url_for('register') }}" class="reg-button">REGISTER</a></button>
         </div>
-        <div class="vertical-bar">
-            <div class="search-icon">
-                <i class="fa fa-th-list" onclick="showLeader()"></i>
-            </div>
-            <div class="social-icons">
-                <p class="leader">L</p>
-                <p class="leader">E</p>
-                <p class="leader">A</p>
-                <p class="leader">D</p>
-                <p class="leader">E</p>
-                <p class="leader">R</p>
-                <p class="leader">B</p>
-                <p class="leader">O</p>
-                <p class="leader">A</p>
-                <p class="leader">R</p>
-                <p class="leader">D</p>
-                <p class="leader">S</p>
-            </div>
+   
+        <div class="vertical-bar" id="vertical-bar">
+            <i class="fa fa-th-list" onclick="showLeader()" id="list-icon"></i>
+            <i class="fa fa-close" onclick="dont_showLeader()" id="close-icon"></i>
+            <p id="leader-board-title">
+                LEADERBOARDS
+            </p>
         </div>
+        
         <div class="notifications">
             <div class="contents">
                 <small>COUNTRY OF THE DAY!</small>
             </div>
             <div class="notification-img">
-                <img src="../static/images/4x3/ad.svg"
+                <img src="../static/images/4x3/ad.svg" id="random_flag">
             </div>
         </div>
     </div>
@@ -83,30 +73,33 @@
     function closeMenu() {
         show.style.right = "-200px";
     }
-    var show_leader = document.getElementById("search_icon")
+
+    var bar = document.getElementById("vertical-bar")
+    var list_icon = document.getElementById("list-icon")
+    var leader_title = document.getElementById("leader-board-title")
+    var close_icon = document.getElementById("close-icon")
     function showLeader() {
-        show_leader.style.width = "400px";
+        bar.style.width = "50%";
+        list_icon.style.display = "none";
+        leader_title.style.display = "none";
+        close_icon.style.display = "block";
+
+
     }
     function dont_showLeader() {
-        show_leader.style.width = "80px";
+        bar.style.width = "80px";
+        list_icon.style.display = "block";
+        close_icon.style.display = "none";
+        leader_title.style.display = "block";
+    }
+
+    window.onload = chooseFlag;
+    const flags = ['../static/images/4x3/gp.svg', '../static/images/4x3/km.svg', '../static/images/4x3/sz.svg', '../static/images/4x3/bd.svg', '../static/images/4x3/cefta.svg', '../static/images/4x3/vi.svg', '../static/images/4x3/se.svg', '../static/images/4x3/ms.svg', '../static/images/4x3/sh.svg', '../static/images/4x3/sj.svg', '../static/images/4x3/om.svg', '../static/images/4x3/re.svg', '../static/images/4x3/nf.svg', '../static/images/4x3/eu.svg', '../static/images/4x3/py.svg', '../static/images/4x3/tl.svg', '../static/images/4x3/uy.svg', '../static/images/4x3/id.svg', '../static/images/4x3/fi.svg', '../static/images/4x3/tf.svg', '../static/images/4x3/dm.svg', '../static/images/4x3/it.svg', '../static/images/4x3/fr.svg', '../static/images/4x3/lv.svg', '../static/images/4x3/ni.svg', '../static/images/4x3/cw.svg', '../static/images/4x3/sa.svg', '../static/images/4x3/bt.svg', '../static/images/4x3/gu.svg', '../static/images/4x3/pf.svg', '../static/images/4x3/my.svg', '../static/images/4x3/st.svg', '../static/images/4x3/pe.svg', '../static/images/4x3/gs.svg', '../static/images/4x3/ci.svg', '../static/images/4x3/pl.svg', '../static/images/4x3/vg.svg', '../static/images/4x3/ws.svg', '../static/images/4x3/cl.svg', '../static/images/4x3/la.svg', '../static/images/4x3/cg.svg', '../static/images/4x3/er.svg', '../static/images/4x3/in.svg', '../static/images/4x3/fk.svg', '../static/images/4x3/nz.svg', '../static/images/4x3/np.svg', '../static/images/4x3/ae.svg', '../static/images/4x3/gb-wls.svg', '../static/images/4x3/qa.svg', '../static/images/4x3/mt.svg', '../static/images/4x3/kp.svg', '../static/images/4x3/ye.svg', '../static/images/4x3/ck.svg', '../static/images/4x3/pm.svg', '../static/images/4x3/jm.svg', '../static/images/4x3/ac.svg', '../static/images/4x3/fm.svg', '../static/images/4x3/ma.svg', '../static/images/4x3/ne.svg', '../static/images/4x3/sc.svg', '../static/images/4x3/br.svg', '../static/images/4x3/th.svg', '../static/images/4x3/cz.svg', '../static/images/4x3/lk.svg', '../static/images/4x3/tz.svg', '../static/images/4x3/io.svg', '../static/images/4x3/ch.svg', '../static/images/4x3/rw.svg', '../static/images/4x3/ta.svg', '../static/images/4x3/gw.svg', '../static/images/4x3/ss.svg', '../static/images/4x3/es-ct.svg', '../static/images/4x3/iq.svg', '../static/images/4x3/ps.svg', '../static/images/4x3/tg.svg', '../static/images/4x3/cv.svg', '../static/images/4x3/ca.svg', '../static/images/4x3/mm.svg', '../static/images/4x3/ng.svg', '../static/images/4x3/wf.svg', '../static/images/4x3/mz.svg', '../static/images/4x3/ea.svg', '../static/images/4x3/sv.svg', '../static/images/4x3/xk.svg', '../static/images/4x3/hk.svg', '../static/images/4x3/ls.svg', '../static/images/4x3/af.svg', '../static/images/4x3/cp.svg', '../static/images/4x3/pn.svg', '../static/images/4x3/ly.svg', '../static/images/4x3/si.svg', '../static/images/4x3/gg.svg', '../static/images/4x3/cr.svg', '../static/images/4x3/ga.svg', '../static/images/4x3/bf.svg', '../static/images/4x3/aq.svg', '../static/images/4x3/gn.svg', '../static/images/4x3/as.svg', '../static/images/4x3/cm.svg', '../static/images/4x3/is.svg', '../static/images/4x3/dz.svg', '../static/images/4x3/at.svg', '../static/images/4x3/et.svg', '../static/images/4x3/tv.svg', '../static/images/4x3/sl.svg', '../static/images/4x3/mh.svg', '../static/images/4x3/vu.svg', '../static/images/4x3/ro.svg', '../static/images/4x3/hu.svg', '../static/images/4x3/ao.svg', '../static/images/4x3/lc.svg', '../static/images/4x3/sk.svg', '../static/images/4x3/pr.svg', '../static/images/4x3/tn.svg', '../static/images/4x3/pa.svg', '../static/images/4x3/me.svg', '../static/images/4x3/az.svg', '../static/images/4x3/do.svg', '../static/images/4x3/bv.svg', '../static/images/4x3/mr.svg', '../static/images/4x3/gh.svg', '../static/images/4x3/ag.svg', '../static/images/4x3/aw.svg', '../static/images/4x3/za.svg', '../static/images/4x3/pw.svg', '../static/images/4x3/bi.svg', '../static/images/4x3/de.svg', '../static/images/4x3/gt.svg', '../static/images/4x3/mw.svg', '../static/images/4x3/mq.svg', '../static/images/4x3/cn.svg', '../static/images/4x3/zm.svg', '../static/images/4x3/lb.svg', '../static/images/4x3/ai.svg', '../static/images/4x3/bs.svg', '../static/images/4x3/gb.svg', '../static/images/4x3/il.svg', '../static/images/4x3/cf.svg', '../static/images/4x3/nu.svg', '../static/images/4x3/vc.svg', '../static/images/4x3/so.svg', '../static/images/4x3/sr.svg', '../static/images/4x3/im.svg', '../static/images/4x3/gl.svg', '../static/images/4x3/gb-nir.svg', '../static/images/4x3/eg.svg', '../static/images/4x3/es-ga.svg', '../static/images/4x3/ar.svg', '../static/images/4x3/cy.svg', '../static/images/4x3/mp.svg', '../static/images/4x3/tj.svg', '../static/images/4x3/eh.svg', '../static/images/4x3/kz.svg', '../static/images/4x3/kn.svg', '../static/images/4x3/fj.svg', '../static/images/4x3/mv.svg', '../static/images/4x3/ua.svg', '../static/images/4x3/cu.svg', '../static/images/4x3/ky.svg', '../static/images/4x3/ad.svg', '../static/images/4x3/td.svg', '../static/images/4x3/va.svg', '../static/images/4x3/ax.svg', '../static/images/4x3/ru.svg', '../static/images/4x3/nl.svg', '../static/images/4x3/dk.svg', '../static/images/4x3/pt.svg', '../static/images/4x3/ve.svg', '../static/images/4x3/mu.svg', '../static/images/4x3/au.svg', '../static/images/4x3/hm.svg', '../static/images/4x3/bz.svg', '../static/images/4x3/bm.svg', '../static/images/4x3/mc.svg', '../static/images/4x3/cd.svg', '../static/images/4x3/hr.svg', '../static/images/4x3/pk.svg', '../static/images/4x3/vn.svg', '../static/images/4x3/cc.svg', '../static/images/4x3/ug.svg', '../static/images/4x3/hn.svg', '../static/images/4x3/bn.svg', '../static/images/4x3/zw.svg', '../static/images/4x3/gb-eng.svg', '../static/images/4x3/us.svg', '../static/images/4x3/mf.svg', '../static/images/4x3/lr.svg', '../static/images/4x3/kh.svg', '../static/images/4x3/bq.svg', '../static/images/4x3/gd.svg', '../static/images/4x3/sx.svg', '../static/images/4x3/ki.svg', '../static/images/4x3/fo.svg', '../static/images/4x3/ge.svg', '../static/images/4x3/mo.svg', '../static/images/4x3/gf.svg', '../static/images/4x3/gy.svg', '../static/images/4x3/ec.svg', '../static/images/4x3/kw.svg', '../static/images/4x3/ic.svg', '../static/images/4x3/sg.svg', '../static/images/4x3/tk.svg', '../static/images/4x3/bb.svg', '../static/images/4x3/gb-sct.svg', '../static/images/4x3/pg.svg', '../static/images/4x3/nr.svg', '../static/images/4x3/md.svg', '../static/images/4x3/tc.svg', '../static/images/4x3/al.svg', '../static/images/4x3/mk.svg', '../static/images/4x3/bw.svg', '../static/images/4x3/nc.svg', '../static/images/4x3/am.svg', '../static/images/4x3/ph.svg', '../static/images/4x3/dg.svg', '../static/images/4x3/gq.svg', '../static/images/4x3/je.svg', '../static/images/4x3/mx.svg', '../static/images/4x3/li.svg', '../static/images/4x3/bl.svg', '../static/images/4x3/co.svg', '../static/images/4x3/to.svg', '../static/images/4x3/un.svg', '../static/images/4x3/tt.svg', '../static/images/4x3/dj.svg', '../static/images/4x3/lt.svg', '../static/images/4x3/gi.svg', '../static/images/4x3/ml.svg', '../static/images/4x3/gm.svg', '../static/images/4x3/ke.svg', '../static/images/4x3/sy.svg', '../static/images/4x3/um.svg', '../static/images/4x3/gr.svg', '../static/images/4x3/es.svg', '../static/images/4x3/jo.svg', '../static/images/4x3/sn.svg', '../static/images/4x3/tw.svg', '../static/images/4x3/na.svg', '../static/images/4x3/lu.svg', '../static/images/4x3/ee.svg', '../static/images/4x3/sd.svg', '../static/images/4x3/kg.svg', '../static/images/4x3/by.svg', '../static/images/4x3/ht.svg', '../static/images/4x3/tr.svg', '../static/images/4x3/be.svg', '../static/images/4x3/ie.svg', '../static/images/4x3/ba.svg', '../static/images/4x3/tm.svg', '../static/images/4x3/mn.svg', '../static/images/4x3/sb.svg', '../static/images/4x3/bj.svg', '../static/images/4x3/bh.svg', '../static/images/4x3/mg.svg', '../static/images/4x3/sm.svg', '../static/images/4x3/no.svg', '../static/images/4x3/rs.svg', '../static/images/4x3/xx.svg', '../static/images/4x3/bg.svg', '../static/images/4x3/bo.svg', '../static/images/4x3/cx.svg', '../static/images/4x3/jp.svg', '../static/images/4x3/kr.svg', '../static/images/4x3/uz.svg', '../static/images/4x3/ir.svg', '../static/images/4x3/yt.svg'];
+    function chooseFlag() {
+        var flag_index = Math.floor(Math.random() * 267)
+        document.getElementById("random_flag").src = flags[flag_index];
     }
     </script>
-    
-    <!--
-        <div class="col-sm-2" id="leaderboard" style="color:white; border-style: solid; border-color: white">
-        <p>This is going to be the div for leaderboard</p>
-    </div>
-    -->
-
-    <!--
-    <div class="login-box">
-        {% block content %}{% endblock %}
-    </div>
-
-    <div class="bingbong">
-
-    </div>
-    -->
     
 </body>
 </html>
