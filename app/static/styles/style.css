@@ -162,6 +162,10 @@
     display: none;
 }
 
+#leader-board-table-small {
+    display: none;
+}
+
 @media (max-width: 700px) {
     .vertical-bar{
         display: none;
@@ -222,5 +226,5 @@
         display: none;
         color: white;
         margin: auto;
-    }
+    } 
 }
