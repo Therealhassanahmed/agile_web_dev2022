@@ -52,8 +52,8 @@
                         {% if user.high_score is number %}
                         <tr class="leaderboard">
                             <td class="leaderboard">{{ user.username }}</td>
-                            <td class="leaderboard">{{ user.high_score }}</td>
-                            <td class="leaderboard">{{ user.average_score }}</td>
+                            <td class="leaderboard">{{ user.high_score_easy }}</td>
+                            <td class="leaderboard">{{ user.average_score_easy }}</td>
                         </tr>
                         {% endif %}
                     
@@ -82,11 +82,11 @@
                         <th>Average Score</th>
                     </tr>
                     {% for user in user_leaderboard %}
-                    {% if user.high_score is number %}
+                    {% if user.high_score_easy is number %}
                     <tr class="leaderboard">
-                        <td class="leaderboard">{{ user.username }}</td>
-                        <td class="leaderboard">{{ user.high_score }}</td>
-                        <td class="leaderboard">{{ user.average_score }}</td>
+                        <td class="leaderboard">{{ user.username_easy }}</td>
+                        <td class="leaderboard">{{ user.high_score_easy }}</td>
+                        <td class="leaderboard">{{ user.average_score_easy }}</td>
                     </tr>
                     {% endif %}
                 
