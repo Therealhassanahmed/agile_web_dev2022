@@ -40,7 +40,7 @@
                     <a onclick="show_Leader()" style="color: white; text-decoration: none; cursor: pointer;" id="leader-board-small"><li>LEADERBOARDS</li></a>
                 </ul>
                 <!--need to implement link for login page >>> causing jinja to fail-->
-                <button type="button" class="btn" id="login-button-small">LOGIN</button>
+                <button type="button" class="btn" id="login-button-small" onclick="show_login_popup()">LOGIN</button>
                 <div class="leader-board-table" id="leader-board-table-small">
                     <table class="leaderboard" id="leader_table" style="width:100%">
                         <tr>
@@ -103,6 +103,32 @@
                 <img src="../static/images/4x3/ad.svg" id="random_flag">
             </div>
         </div>
+
+        <div class="login-popup" id="login-popup">
+            <div class="login-form">
+                <h1 class="sign-in-center">Sign In</h1>
+                <form action="" method="post" novalidate>
+                    {{ form.hidden_tag() }}
+                    <p style="margin-right: 220px; margin-bottom: 0px">
+                        {{ form.username.label }}
+                    </p>
+                    <p class="sign-in-center">
+                        {{ form.username(size=32) }}
+                    </p>
+                    <p style="margin-right: 220px; margin-bottom: 0px">
+                        {{ form.password.label }}
+                    </p>
+                    <p class="sign-in-center" style="margin-bottom: 30px;">
+                        {{ form.password(size=32) }}
+                    </p>
+                    <p class="sign-in-center" style="margin-bottom: 15px;">New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+                    <p class="sign-in-center" style="margin-bottom: 15px;">{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+                    <p class="sign-in-center">{{ form.submit() }}</p>
+                </form>
+            </div>
+            <i class="fa fa-close" onclick="dont_show_login_popup()" id="close-icon-login"></i>
+        </div>
+
     </div>
 
     <script>
@@ -163,6 +189,15 @@
         nav_links_small.style.marginBottom = "-2px";
         login_button_small.style.display = "block";
         leader_board_table_small.style.display = "none";
+    }
+    var login_popup = document.getElementById("login-popup")
+
+    function show_login_popup() {
+        login_popup.style.display = "flex";
+    }
+
+    function dont_show_login_popup() {
+        login_popup.style.display = "none";
     }
 
     window.onload = chooseFlag;
