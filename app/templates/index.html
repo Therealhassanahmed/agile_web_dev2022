@@ -90,23 +90,61 @@
                     <button type="button" class="btn" id="hard-leader-button" onclick="show_hard()">HARD</button>
                 </div class="leader-btns">
                 <div class="table-div" id="table-div">
+                <div id="easy">
+                    <table class="leaderboard" id="leader_table" style="width:100%;">
+                        <tr>
+                            <th>Username</th>
+                            <th>High Score</th>
+                            <th>Average Score</th>
+                        </tr>
+                        {% for user in user_leaderboard_easy %}
+                        {% if user.high_score_easy is number %}
+                        <tr class="leaderboard">
+                            <td class="leaderboard">{{ user.username }}</td>
+                            <td class="leaderboard">{{ user.high_score_easy }}</td>
+                        </tr>
+                        {% endif %}
+                    
+                    {% endfor %}
+                </table>
+                </div>
+            <div id="normal">
                 <table class="leaderboard" id="leader_table" style="width:100%;">
                     <tr>
                         <th>Username</th>
                         <th>High Score</th>
                         <th>Average Score</th>
                     </tr>
-                    {% for user in user_leaderboard_easy %}
-                    {% if user.high_score_easy is number %}
+                    {% for user in user_leaderboard_normal %}
+                    {% if user.high_score_normal is number %}
                     <tr class="leaderboard">
                         <td class="leaderboard">{{ user.username }}</td>
-                        <td class="leaderboard">{{ user.high_score_easy }}</td>
+                        <td class="leaderboard">{{ user.high_score_normal }}</td>
                     </tr>
                     {% endif %}
                 
                 {% endfor %}
             </table>
             </div>
+            <div id="hard">
+                <table class="leaderboard" id="leader_table" style="width:100%;">
+                    <tr>
+                        <th>Username</th>
+                        <th>High Score</th>
+                        <th>Average Score</th>
+                    </tr>
+                    {% for user in user_leaderboard_hard %}
+                    {% if user.high_score_hard is number %}
+                    <tr class="leaderboard">
+                        <td class="leaderboard">{{ user.username }}</td>
+                        <td class="leaderboard">{{ user.high_score_hard }}</td>
+                    </tr>
+                    {% endif %}
+                
+                {% endfor %}
+            </table>
+            </div>
+                </div>
             </div>
         </div>
         
@@ -219,23 +257,29 @@
     }
 
     var tabel_div = document.getElementById("table-div");
+    var easy = document.getElementById("easy");
+    var normal = document.getElementById("normal");
+    var hard = document.getElementById("hard");
 
     function show_easy() {
         tabel_div.style.display = "block";
-        //normal-table.display = none
-        //hard-table.display = none
+        easy.style.display = "block"
+        normal.style.display = 'none';
+        hard.style.display = 'none';
     }
 
     function show_normal() {
         tabel_div.style.display = "block";
-        //easy-table.display = none
-        //hard-table.display = none
+        easy.style.display = 'none';
+        normal.style.display = 'block'
+        hard.style.display = 'none';
     }
     
     function show_hard() {
         tabel_div.style.display = "block";
-        //easy-table.display = none
-        //normal-table.display = none
+        easy.style.display = 'none';
+        normal.style.display = 'none';
+        hard.style.display = 'block'
     }
 
     var tabel_div_small = document.getElementById("table-div-small");
