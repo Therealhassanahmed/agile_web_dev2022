@@ -37,6 +37,7 @@ def login():
 
 
 @app.route('/hard', methods=['GET', 'POST'])
+@login_required
 def hard():
     location = Location.query.all()
     form = request.form
@@ -52,6 +53,7 @@ def hard():
     return render_template("hard.html", location=location, cities=cities, countries=countries, populations=populations, highscore=highscore)
 
 @app.route('/normal', methods=['GET', 'POST'])
+@login_required
 def normal():
     location = Location.query.all()
     form = request.form
@@ -67,6 +69,7 @@ def normal():
     return render_template("normal.html", location=location, cities=cities, countries=countries, populations=populations, highscore=highscore)
 
 @app.route('/easy', methods=['GET', 'POST'])
+@login_required
 def easy():
     location = Location.query.all()
     form = request.form

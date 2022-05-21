@@ -80,7 +80,7 @@
         </div>
         <div class="banner-title">
             <h1>The Higher or Lower Game.<br><span>Cities Edition.</span></h1>
-            <button type="button" class="btn"><a href="{{ url_for('register') }}" class="reg-button">REGISTER</a></button>
+            <button type="button" class="btn" id="register"><a href="{{ url_for('register') }}" class="reg-button">REGISTER</a></button>
         </div>
    
         <div class="vertical-bar" id="vertical-bar">
@@ -191,6 +191,10 @@
     </div>
 
     <script>
+    {% if current_user.is_anonymous %}
+    {% else %}
+    document.getElementById("register").style.display = 'none';
+    {% endif %}
     var show = document.getElementById("nav-links");
     function showMenu() {
         show.style.right = "0";
