@@ -96,10 +96,10 @@
                         <th>High Score</th>
                         <th>Average Score</th>
                     </tr>
-                    {% for user in user_leaderboard %}
+                    {% for user in user_leaderboard_easy %}
                     {% if user.high_score_easy is number %}
                     <tr class="leaderboard">
-                        <td class="leaderboard">{{ user.username_easy }}</td>
+                        <td class="leaderboard">{{ user.username }}</td>
                         <td class="leaderboard">{{ user.high_score_easy }}</td>
                     </tr>
                     {% endif %}

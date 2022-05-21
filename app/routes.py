@@ -12,8 +12,11 @@ from werkzeug.urls import url_parse
 @app.route('/index')
 @login_required
 def index():
-    user_leaderboard = User.query.order_by(User.high_score.desc())[0:4]
-    return render_template("index.html", title='Home Page', user_leaderboard=user_leaderboard)
+    form = LoginForm()
+    user_leaderboard_easy = User.query.order_by(User.high_score_easy.desc())[0:4]
+    user_leaderboard_normal = User.query.order_by(User.high_score_normal.desc())[0:4]
+    user_leaderboard_hard = User.query.order_by(User.high_score_hard.desc())[0:4]
+    return render_template("index.html", title='Home Page', form=form, user_leaderboard_easy=user_leaderboard_easy, user_leaderboard_normal=user_leaderboard_normal, user_leaderboard_hard=user_leaderboard_hard)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -78,7 +81,7 @@ def register():
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data, high_score=0, average_score=0.0, number_of_plays=0)
+        user = User(username=form.username.data, email=form.email.data, high_score_easy=0, high_score_normal=0, high_score_hard=0)
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
