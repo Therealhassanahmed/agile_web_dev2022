@@ -226,6 +226,14 @@
     margin-left: 200px;
 }
 
+.table-div {
+    display: none;
+}
+
+.table-div-small {
+    display: none;
+}
+
 @media (max-width: 700px) {
     .vertical-bar{
         display: none;
