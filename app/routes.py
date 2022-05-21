@@ -1,7 +1,7 @@
 from app import app, db
 from app.forms import RegistrationForm
 from flask import render_template, flash, redirect, request, url_for
-from app.forms import LoginForm
+from app.forms import LoginForm, EditingForm
 from app.models import User, Location
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
@@ -36,10 +36,27 @@ def login():
     return render_template('login.html', title='Sign In', form=form)
 
 
-@app.route('/gaming')
+@app.route('/gaming', methods=['GET', 'POST'])
 def gaming():
+    
     location = Location.query.all()
-    return render_template("gaming.html", location=location, cities=cities, countries=countries, populations=populations)
+    # form to get score from gaming.html
+    form = EditingForm()
+    # When POST is sent
+    if form.validate_on_submit():
+        # If current user is not logged in send them back to index
+        if current_user.is_anonymous:
+            return redirect(url_for('index'))
+        # Will collect the current user's data
+        score_to_update = User.query.get(current_user.id)
+        # If failure to beat previous high score will simply send them back to index
+        if score_to_update.high_score_hard >= int(form.score.data):
+            return redirect(url_for('index'))
+        # Updates score of current_user and commits it
+        score_to_update.high_score_hard = int(form.score.data)
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template("gaming.html", location=location, cities=cities, countries=countries, populations=populations, form=form)
 
 @app.route('/normal')
 def normal():
@@ -88,3 +105,16 @@ def register():
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
+
+@app.route('/update', methods=['GET', 'POST'])
+@login_required
+def update():
+    if not current_user.is_authenticated:
+        return redirect(url_for('gaming'))
+    form = User()
+    score_to_update = User.query.get(current_user.id)
+    if request.method == 'POST':
+        user = request.form['nm']
+        score_to_update.high_score_easy = user
+        db.session.commit()
+        return render_template("index.html", form=form)
