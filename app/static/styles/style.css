@@ -215,6 +215,12 @@
     padding-bottom: 50px;
 }
 
+.leader-btns-small {
+    position: relative;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
 .leaderboard {
     width: 1200px;
     margin-left: 200px;

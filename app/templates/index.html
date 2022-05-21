@@ -45,7 +45,12 @@
                 <a href="{{ url_for('logout') }}">LOGOUT</a>
                 {% endif %}
                 <div class="leader-board-table" id="leader-board-table-small">
-                    <table class="leaderboard" id="leader_table" style="width:100%">
+                    <div class="leader-btns-small">
+                        <button type="button" class="btn" id="easy-leader-button">EASY</button>
+                        <button type="button" class="btn" id="normal-leader-button">NORMAL</button>
+                        <button type="button" class="btn" id="hard-leader-button">HARD</button>
+                    </div class="leader-btns">
+                    <table class="leaderboard" id="leader_table" style="width:100%; margin-left: 80px; margin-top: 60px;">
                         <tr>
                             <th>Username</th>
                             <th>High Score</th>
