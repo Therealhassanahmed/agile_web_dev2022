@@ -36,20 +36,50 @@ def login():
     return render_template('login.html', title='Sign In', form=form)
 
 
-@app.route('/gaming')
+@app.route('/gaming', methods=['GET', 'POST'])
 def gaming():
     location = Location.query.all()
-    return render_template("gaming.html", location=location, cities=cities, countries=countries, populations=populations)
+    form = request.form
+    highscore = 0
+    if request.method == 'POST':
+        highscore = form["postit"]
+        currentuser = User.query.get(current_user.id)
+        if currentuser.high_score_hard >= int(highscore):
+            None
+        else:
+            currentuser.high_score_hard = int(highscore)
+            db.session.commit()
+    return render_template("gaming.html", location=location, cities=cities, countries=countries, populations=populations, highscore=highscore)
 
-@app.route('/normal')
+@app.route('/normal', methods=['GET', 'POST'])
 def normal():
     location = Location.query.all()
-    return render_template("normal.html", location=location, cities=cities, countries=countries, populations=populations)
+    form = request.form
+    highscore = 0
+    if request.method == 'POST':
+        highscore = form["postit"]
+        currentuser = User.query.get(current_user.id)
+        if currentuser.high_score_normal >= int(highscore):
+            None
+        else:
+            currentuser.high_score_normal = int(highscore)
+            db.session.commit()
+    return render_template("normal.html", location=location, cities=cities, countries=countries, populations=populations, highscore=highscore)
 
-@app.route('/easy')
+@app.route('/easy', methods=['GET', 'POST'])
 def easy():
     location = Location.query.all()
-    return render_template("easy.html", location=location, cities=cities, countries=countries, populations=populations)
+    form = request.form
+    highscore = 0
+    if request.method == 'POST':
+        highscore = form["postit"]
+        currentuser = User.query.get(current_user.id)
+        if currentuser.high_score_easy >= int(highscore):
+            None
+        else:
+            currentuser.high_score_easy = int(highscore)
+            db.session.commit()
+    return render_template("easy.html", location=location, cities=cities, countries=countries, populations=populations, highscore=highscore)
 
 def cities():
     lst = []

@@ -16,7 +16,9 @@
         var cities = {{cities()|tojson|safe}}
         var countries = {{countries()|tojson|safe}}
         var populations = {{populations()|tojson|safe}}
-        let x = 0
+        let high = {{current_user.high_score_hard}}
+        let current = 0;
+        let x = 0;
         let y = Math.floor((Math.random() * cities.length));
         let z = Math.floor((Math.random() * cities.length));
         let skips = 3
@@ -34,6 +36,7 @@
                 }
                 else {
                     alert("Game over you scored: " + x.toString())
+                    update_score(x);
                     x = 0;
                     document.getElementById("count").innerHTML = x;
                     document.getElementById("num_1").innerHTML = cities[z] + ": " + populations[z].toString();
@@ -54,6 +57,7 @@
                 }
                 else {
                     alert("Game over you scored: " + x.toString())
+                    update_score(x);
                     x = 0;
                     document.getElementById("count").innerHTML = x;
                     document.getElementById("num_1").innerHTML = cities[z] + ": " + populations[z].toString();
@@ -115,7 +119,14 @@
     <button id="Skip">Skip (3 remaining)</button>
     <div class="col-sm-5" id="city_1">---------------------</div>
     <div class="col-sm-5" id="city_2">---------------------</div>
-
+    <div>
+        <p>Your Current High Score: {{ current_user.high_score_hard }}</p>
+        <p id="score_display"></p>
+    </div>
+    <form method="POST">
+        <input type="hidden" id='highscore' value='0' name="postit"></input>
+        <input type="submit" value="Update High Score"></input>
+    </form>
     <script>
         //js for navbar changes (screen size changes)
         var show = document.getElementById("nav-links");
@@ -124,6 +135,13 @@
         }
         function closeMenu() {
             show.style.right = "-200px";
+        }
+        function update_score(score) {
+            if (score > current) {
+                current = score;
+            }
+            document.getElementById("score_display").innerHTML = "Session High Score: " + current.toString();
+            document.getElementById("highscore").value = current;
         }
     </script>
 </body>
