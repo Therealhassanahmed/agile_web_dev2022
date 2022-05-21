@@ -39,25 +39,35 @@
                     <a onclick="showLeader()" style="color: white; text-decoration: none; cursor: pointer;" id="leader-board-big"><li>LEADERBOARDS</li></a>
                     <a onclick="show_Leader()" style="color: white; text-decoration: none; cursor: pointer;" id="leader-board-small"><li>LEADERBOARDS</li></a>
                 </ul>
-                <!--need to implement link for login page >>> causing jinja to fail-->
-                <button type="button" class="btn" id="login-button-small">LOGIN</button>
+                {% if current_user.is_anonymous %}
+                <button type="button" class="btn" id="login-button-small" onclick="show_login_popup()">LOGIN</button>
+                {% else %}
+                <a href="{{ url_for('logout') }}">LOGOUT</a>
+                {% endif %}
                 <div class="leader-board-table" id="leader-board-table-small">
-                    <table class="leaderboard" id="leader_table" style="width:100%">
-                        <tr>
-                            <th>Username</th>
-                            <th>High Score</th>
-                            <th>Average Score</th>
-                        </tr>
-                        {% for user in user_leaderboard %}
-                        {% if user.high_score is number %}
-                        <tr class="leaderboard">
-                            <td class="leaderboard">{{ user.username }}</td>
-                            <td class="leaderboard">{{ user.high_score_easy }}</td>
-                        </tr>
-                        {% endif %}
-                    
-                    {% endfor %}
-                </table>
+                    <div class="leader-btns-small">
+                        <button type="button" class="btn" id="easy-leader-button" onclick="show_easy_small()">EASY</button>
+                        <button type="button" class="btn" id="normal-leader-button" onclick="show_normal_small()">NORMAL</button>
+                        <button type="button" class="btn" id="hard-leader-button" onclick="show_hard_small()">HARD</button>
+                    </div class="leader-btns">
+                    <div class="table-div-small" id="table-div-small">
+                        <table class="leaderboard" id="leader_table" style="width:100%; margin-left: 80px; margin-top: 60px;">
+                            <tr>
+                                <th>Username</th>
+                                <th>High Score</th>
+                                <th>Average Score</th>
+                            </tr>
+                            {% for user in user_leaderboard %}
+                            {% if user.high_score is number %}
+                            <tr class="leaderboard">
+                                <td class="leaderboard">{{ user.username }}</td>
+                                <td class="leaderboard">{{ user.high_score_easy }}</td>
+                            </tr>
+                            {% endif %}
+                        
+                        {% endfor %}
+                    </table>
+                    </div>
                 </div>
             </div>
             <i class="fa fa-bars" onclick="showMenu()"></i>
@@ -74,7 +84,13 @@
                 LEADERBOARDS
             </p>
             <div class="leader-board-table" id="leader-board-table">
-                <table class="leaderboard" id="leader_table" style="width:100%">
+                <div class="leader-btns">
+                    <button type="button" class="btn" id="easy-leader-button" onclick="show_easy()">EASY</button>
+                    <button type="button" class="btn" id="normal-leader-button" onclick="show_normal()">NORMAL</button>
+                    <button type="button" class="btn" id="hard-leader-button" onclick="show_hard()">HARD</button>
+                </div class="leader-btns">
+                <div class="table-div" id="table-div">
+                <table class="leaderboard" id="leader_table" style="width:100%;">
                     <tr>
                         <th>Username</th>
                         <th>High Score</th>
@@ -91,6 +107,7 @@
                 {% endfor %}
             </table>
             </div>
+            </div>
         </div>
         
         <div class="notifications">
@@ -101,6 +118,32 @@
                 <img src="../static/images/4x3/ad.svg" id="random_flag">
             </div>
         </div>
+
+        <div class="login-popup" id="login-popup">
+            <div class="login-form">
+                <h1 class="sign-in-center">Sign In</h1>
+                <form action="" method="post" novalidate>
+                    {{ form.hidden_tag() }}
+                    <p style="margin-right: 220px; margin-bottom: 0px">
+                        {{ form.username.label }}
+                    </p>
+                    <p class="sign-in-center">
+                        {{ form.username(size=32) }}
+                    </p>
+                    <p style="margin-right: 220px; margin-bottom: 0px">
+                        {{ form.password.label }}
+                    </p>
+                    <p class="sign-in-center" style="margin-bottom: 30px;">
+                        {{ form.password(size=32) }}
+                    </p>
+                    <p class="sign-in-center" style="margin-bottom: 15px;">New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+                    <p class="sign-in-center" style="margin-bottom: 15px;">{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+                    <p class="sign-in-center">{{ form.submit() }}</p>
+                </form>
+            </div>
+            <i class="fa fa-close" onclick="dont_show_login_popup()" id="close-icon-login"></i>
+        </div>
+
     </div>
 
     <script>
@@ -124,6 +167,7 @@
         list_icon.style.display = "none";
         leader_title.style.display = "inline-block";
         leader_title.style.writingMode = "horizontal-tb";
+        leader_title.style.paddingLeft = "325px";
         close_icon.style.display = "block";
         leader_board_table.style.display = "block";
     }
@@ -133,6 +177,7 @@
         close_icon.style.display = "none";
         leader_title.style.display = "block";
         leader_title.style.writingMode = "vertical-rl";
+        leader_title.style.paddingLeft = "0px";
         leader_board_table.style.display = "none";
 
     }
@@ -161,6 +206,56 @@
         nav_links_small.style.marginBottom = "-2px";
         login_button_small.style.display = "block";
         leader_board_table_small.style.display = "none";
+    }
+    var login_popup = document.getElementById("login-popup");
+
+    function show_login_popup() {
+        login_popup.style.display = "flex";
+        show.style.right = "-200px";
+    }
+
+    function dont_show_login_popup() {
+        login_popup.style.display = "none";
+    }
+
+    var tabel_div = document.getElementById("table-div");
+
+    function show_easy() {
+        tabel_div.style.display = "block";
+        //normal-table.display = none
+        //hard-table.display = none
+    }
+
+    function show_normal() {
+        tabel_div.style.display = "block";
+        //easy-table.display = none
+        //hard-table.display = none
+    }
+    
+    function show_hard() {
+        tabel_div.style.display = "block";
+        //easy-table.display = none
+        //normal-table.display = none
+    }
+
+    var tabel_div_small = document.getElementById("table-div-small");
+
+    function show_easy_small() {
+        tabel_div_small.style.display = "block";
+        //normal-table.display = none
+        //hard-table.display = none
+    }
+
+    function show_normal_small() {
+        tabel_div_small.style.display = "block";
+        //easy-table.display = none
+        //hard-table.display = none
+    }
+
+    function show_hard_small() {
+        tabel_div_small.style.display = "block";
+        //easy-table.display = none
+        //normal-table.display = none
     }
 
     window.onload = chooseFlag;
