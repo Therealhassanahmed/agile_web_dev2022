@@ -43,6 +43,12 @@
                 <button type="button" class="btn" id="login-button-small" onclick="show_login_popup()">LOGIN</button>
                 {% else %}
                 <a href="{{ url_for('logout') }}">LOGOUT</a>
+                <div style="color:white">
+                    <p>Your High Scores:</p>
+                    <p>Easy: {{current_user.high_score_easy }}</p>
+                    <p>Normal: {{current_user.high_score_normal }}</p>
+                    <p>Hard: {{current_user.high_score_hard }}</p>
+                </div>
                 {% endif %}
                 <div class="leader-board-table" id="leader-board-table-small">
                     <div class="leader-btns-small">
