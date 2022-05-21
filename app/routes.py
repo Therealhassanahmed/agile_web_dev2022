@@ -36,8 +36,8 @@ def login():
     return render_template('login.html', title='Sign In', form=form)
 
 
-@app.route('/gaming', methods=['GET', 'POST'])
-def gaming():
+@app.route('/hard', methods=['GET', 'POST'])
+def hard():
     location = Location.query.all()
     form = request.form
     highscore = 0
@@ -49,7 +49,7 @@ def gaming():
         else:
             currentuser.high_score_hard = int(highscore)
             db.session.commit()
-    return render_template("gaming.html", location=location, cities=cities, countries=countries, populations=populations, highscore=highscore)
+    return render_template("hard.html", location=location, cities=cities, countries=countries, populations=populations, highscore=highscore)
 
 @app.route('/normal', methods=['GET', 'POST'])
 def normal():
