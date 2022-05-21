@@ -78,6 +78,11 @@
                 LEADERBOARDS
             </p>
             <div class="leader-board-table" id="leader-board-table">
+                <div class="leader-btns">
+                    <button type="button" class="btn" id="easy-leader-button">EASY</button>
+                    <button type="button" class="btn" id="normal-leader-button">NORMAL</button>
+                    <button type="button" class="btn" id="hard-leader-button">HARD</button>
+                </div class="leader-btns">
                 <table class="leaderboard" id="leader_table" style="width:100%">
                     <tr>
                         <th>Username</th>
@@ -155,6 +160,7 @@
         list_icon.style.display = "none";
         leader_title.style.display = "inline-block";
         leader_title.style.writingMode = "horizontal-tb";
+        leader_title.style.paddingLeft = "325px";
         close_icon.style.display = "block";
         leader_board_table.style.display = "block";
     }
@@ -164,6 +170,7 @@
         close_icon.style.display = "none";
         leader_title.style.display = "block";
         leader_title.style.writingMode = "vertical-rl";
+        leader_title.style.paddingLeft = "0px";
         leader_board_table.style.display = "none";
 
     }

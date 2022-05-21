@@ -198,6 +198,28 @@
     font-size: 20px;
 }
 
+.leader-btns .btn {
+    padding: 10px 20px;
+    border: 0;
+    background: black;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin: auto;
+}
+
+.leader-btns {
+    position: relative;
+    width: 1200px;
+    padding-left: 450px;
+    padding-bottom: 50px;
+}
+
+.leaderboard {
+    width: 1200px;
+    margin-left: 200px;
+}
+
 @media (max-width: 700px) {
     .vertical-bar{
         display: none;
