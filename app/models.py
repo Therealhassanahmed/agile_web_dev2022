@@ -25,6 +25,7 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
+# Population data sql table
 class Location(db.Model):
     __tablename__ = "WORLD"
     City = db.Column(db.String(64), primary_key = True)
