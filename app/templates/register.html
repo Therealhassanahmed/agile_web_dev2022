@@ -29,7 +29,14 @@
         <ul id="nav-links-small">
             <a href="{{ url_for('index') }}"><li>HOME</li></a>
             <a href="{{ url_for('about') }}"><li>ABOUT</li></a>
-            <li><a> PLAY</a>
+            <li><a style="color:white"> PLAY</a>
+                <div class = "sub-nav-1">
+                    <ul>
+                        <li><a href="{{ url_for('easy') }}" style="color: black; font-weight: bold;"> EASY</a></li>
+                        <li><a href="{{ url_for('normal') }}" style="color: black; font-weight: bold;"> NORMAL</a></li>
+                        <li><a href="{{ url_for('hard') }}" style="color: black; font-weight: bold;"> HARD</a></li>
+                    </ul>
+                </div>
             <a onclick="showLeader()" style="color: white; text-decoration: none; cursor: pointer;" id="leader-board-big"><li>LEADERBOARDS</li></a>
             <a onclick="show_Leader()" style="color: white; text-decoration: none; cursor: pointer;" id="leader-board-small"><li>LEADERBOARDS</li></a>
         </ul>
