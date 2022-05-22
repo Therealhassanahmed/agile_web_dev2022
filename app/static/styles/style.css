@@ -57,6 +57,34 @@
     width: 100%;
 }
 
+.sub-nav-1 {
+    display: none;
+}
+
+.nav-links ul li:hover .sub-nav-1
+{
+    display: block;
+    position:absolute;
+    background: yellow;
+    color: black;
+    margin-top: 15px;
+    margin-left: -15px;
+}
+
+.nav-links ul li:hover .sub-nav-1 ul
+{
+    display: block;
+    margin: 10px;   
+}
+
+.nav-links ul li:hover .sub-nav-1 ul
+{
+    width: 150px;
+    padding: 10px;
+    border-radius: 0;
+    text-align: left;
+}
+
 .btn {
     padding: 10px 20px;
     border: 0;

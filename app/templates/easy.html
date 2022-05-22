@@ -31,6 +31,7 @@
             $("#Higher_Button").click(function(){
                 if (populations[y] <= populations[z]) {
                     x += 1
+                    document.getElementById("submit_score").setAttribute("hidden",true);
                     document.getElementById("count").innerHTML = x;
                     document.getElementById("num_1").innerHTML = cities[z] + ": " + populations[z].toString();
                 }
@@ -52,6 +53,7 @@
             $("#Lower_Button").click(function(){
                 if (populations[z] <= populations[y]) {
                     x += 1
+                    document.getElementById("submit_score").setAttribute("hidden",true);
                     document.getElementById("count").innerHTML = x;
                     document.getElementById("num_1").innerHTML = cities[z] + ": " + populations[z].toString();
                 }
@@ -123,7 +125,7 @@
     </div>
     <form method="POST">
         <input type="hidden" id='highscore' value='0' name="postit"></input>
-        <input type="submit" value="Update High Score"></input>
+        <input type="submit" id="submit_score" hidden="hidden" value="Update High Score"></input>
     </form>
     <script>
         //js for navbar changes (screen size changes)
@@ -140,6 +142,9 @@
             }
             document.getElementById("score_display").innerHTML = "Session High Score: " + current.toString();
             document.getElementById("highscore").value = current;
+            if (current > {{current_user.high_score_easy}}) {
+                document.getElementById("submit_score").removeAttribute("hidden");
+            }
         }
     </script>
 </body>
