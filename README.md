@@ -1,5 +1,15 @@
 # agile_web_dev2022
 
+In order to launch the app on localhost one must ensure there in the directory of the source code in their terminal and 
+have python installed. Then you must install all the packages in the requirements.txt file through pip install. 
+Then its simply a case of entering $ flask run
+It is advisable that this is done in a virtual environment which can be created with $ python -m venv venv
+Activating the virtual environment requires a command that differs depending on your OS.
+for windows:
+$ venv\Scripts\activate
+or else:
+$ source venv/bin/activate
+
 ### Description of repository:
 
 A collaborative repository for the development of our web application (A higher/lower guessing game based on global city populations)
