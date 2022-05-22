@@ -112,17 +112,17 @@
         <h1 id="num_1" style="font-size: 100px; text-align: center; color: white;"></h1>
         <h1 id="num_2" style="font-size: 100px; text-align: center; color: white;"></h1>
         <div class="h-l-btnz">
-            <button id="Higher_Button">Higher</button>
-            <button id="Lower_Button">Lower</button>
+            <button class="btn" id="Higher_Button">Higher</button>
+            <button class="btn" id="Lower_Button">Lower</button>
         </div>
         <h1 id="count" style="font-size: 100px; text-align: center; color: white;">0</h1>
         <div class="skip-btn">
-            <button id="Skip">Skip (3 remaining)</button>
+            <button class="btn" id="Skip">Skip (3 remaining)</button>
         </div>
         
         <div class="hi-scores">
             <div class="hi-scr-txt">
-                <p>Your current High Score!</p>
+                <p style="padding-top: 20px">Your current High Score!</p>
                 <p style="padding-top: 100px;">{{ current_user.high_score_hard }}</p>
                 <p id="score_display" style="padding-top: 50px;"></p>
             </div>

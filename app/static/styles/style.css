@@ -64,7 +64,7 @@
     font-weight: bold;
     cursor: pointer;
 }
-
+ 
 .reg-button {
     text-decoration: none;
     color: black;
@@ -306,8 +306,8 @@
     margin: auto;
     left: 0;
     right: 0;
-    width: 200px;
-    padding: 40px;
+    width: 300px;
+    padding: 58px;
 }
 
 .skip-btn {
@@ -316,7 +316,7 @@
     left: 0;
     right: 0;
     width: 200px;
-    padding-left: 30px;
+    padding: 10px;
 }
 
 .hi-scores {
