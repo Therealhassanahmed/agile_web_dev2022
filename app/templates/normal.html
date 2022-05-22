@@ -88,6 +88,7 @@
 
     </script>
 </head>
+<!--//////////////////////////////////js--html divide//////////////////////////////////////////////////////////////////////////////-->
 <!--//////////////////////////////////js--html divide//////////////////////////////////////////////////////////////////////////////--> 
 <body style="height: 100vh;
             background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url(../static/images/world_map.jpg);
@@ -125,7 +126,7 @@
         <div class="hi-scores">
             <div class="hi-scr-txt">
                 <p style="padding-top: 20px">Your current High Score!</p>
-                <p style="padding-top: 100px;">{{ current_user.high_score_hard }}</p>
+                <p style="padding-top: 100px;">{{ current_user.high_score_normal }}</p>
                 <p id="score_display" style="padding-top: 50px;"></p>
             </div>
             <form method="POST" class="update-high-score-btn">
@@ -135,6 +136,8 @@
         </div>
 
     </div>
+
+
     <script>
         //js for navbar changes (screen size changes)
         var show = document.getElementById("nav-links");
