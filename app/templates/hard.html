@@ -87,7 +87,7 @@
     </script>
 </head>
 <!--//////////////////////////////////js--html divide//////////////////////////////////////////////////////////////////////////////-->
-<body style="background-color:rgb(63, 59, 59)">
+<body style="background-color:rgb(44, 44, 44)">
 
     <div class="nav-bar">
         <div class="hilo-logo">
@@ -99,33 +99,37 @@
                 <a href="{{ url_for('index') }}"><li>HOME</li></a>
                 <a href="{{ url_for('hard') }}"><li>PLAY</li></a>
             </ul>
-            <!--need to implement link for login page >>> causing jinja to fail-->
         </div>
         <i class="fa fa-bars" onclick="showMenu()"></i>
     </div>
 
-    <h1>
-        This will be where the game goes
-    </h1>
-    <p>So this is the end</p>
-    <h1 id="num_1" style="font-size: 40px;"></h1>
-    <h1 id="num_2" style="font-size: 40px;"></h1>
-    <h1 id="count" style="font-size: 40px;">0</h1>
+    <div class="game-every">
+        <h1 id="num_1" style="font-size: 100px; text-align: center; color: white;"></h1>
+        <h1 id="num_2" style="font-size: 100px; text-align: center; color: white;"></h1>
+        <div class="h-l-btnz">
+            <button id="Higher_Button">Higher</button>
+            <button id="Lower_Button">Lower</button>
+        </div>
+        <h1 id="count" style="font-size: 100px; text-align: center; color: white;">0</h1>
+        <div class="skip-btn">
+            <button id="Skip">Skip (3 remaining)</button>
+        </div>
+        
+        <div class="hi-scores">
+            <div class="hi-scr-txt">
+                <p>Your current High Score!</p>
+                <p style="padding-top: 100px;">{{ current_user.high_score_hard }}</p>
+                <p id="score_display" style="padding-top: 50px;"></p>
+            </div>
+            <form method="POST" class="update-high-score-btn">
+                <input type="hidden" id='highscore' value='0' name="postit"></input>
+                <input type="submit" value="Update High Score"></input>
+            </form>
+        </div>
 
-
-    <button id="Higher_Button">Higher</button>
-    <button id="Lower_Button">Lower</button>
-    <button id="Skip">Skip (3 remaining)</button>
-    <div class="col-sm-5" id="city_1">---------------------</div>
-    <div class="col-sm-5" id="city_2">---------------------</div>
-    <div>
-        <p>Your Current High Score: {{ current_user.high_score_hard }}</p>
-        <p id="score_display"></p>
     </div>
-    <form method="POST">
-        <input type="hidden" id='highscore' value='0' name="postit"></input>
-        <input type="submit" value="Update High Score"></input>
-    </form>
+
+    
     <script>
         //js for navbar changes (screen size changes)
         var show = document.getElementById("nav-links");
