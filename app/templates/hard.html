@@ -104,7 +104,16 @@
             <i class="fa fa-close" onclick="closeMenu()"></i>
             <ul>
                 <a href="{{ url_for('index') }}"><li>HOME</li></a>
-                <a href="{{ url_for('hard') }}"><li>PLAY</li></a>
+                <li><a> PLAY</a>
+                    <div class = "sub-nav-1">
+                        <ul>
+                            <li><a href="{{ url_for('easy') }}"> EASY</a></li>
+                            <li><a href="{{ url_for('normal') }}"> NORMAL</a></li>
+                            <li><a href="{{ url_for('hard') }}"> HARD</a></li>
+                        </ul>
+                    </div>
+
+                </li>
             </ul>
         </div>
         <i class="fa fa-bars" onclick="showMenu()"></i>
