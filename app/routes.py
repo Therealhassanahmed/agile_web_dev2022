@@ -18,6 +18,10 @@ def index():
     user_leaderboard_hard = User.query.order_by(User.high_score_hard.desc())[0:4]
     return render_template("index.html", title='Home Page', form=form, user_leaderboard_easy=user_leaderboard_easy, user_leaderboard_normal=user_leaderboard_normal, user_leaderboard_hard=user_leaderboard_hard)
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
