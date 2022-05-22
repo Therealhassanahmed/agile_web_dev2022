@@ -46,4 +46,29 @@ This allowed for style changes to automatically change at the necessary screen s
 
 ### Back-end descrtiption:
 
+##### DATABASE
+ The database contains 2 tables: one for user data and one for population data.
+ The user model contains an id which is an auto-generated integer; a username, email and password that are strings
+ provided by registering users and integer high scores for each of the difficulties that are managed by the game but
+ are up to the users to post when they achieve a high score.
+ The other table in the database contains the data for each city and its corresponding country and population.
+ The city and country are strings and the population is stored as an integer.
+ This data was scraped from worldpopulationreview.com who I believed to have the most consistent data in terms
+ of defining city borders. When the app is run the database is migrated into the app.
+
+ ##### REGISTRATION & LOGIN
+ When the user accesses the registration or login page a form is created which the user is required to fill out with their
+ account details (username, email, password). Once the user posts this data the database gets updated with the new user
+ or if its an existing user accessing the login page it will login the user.
+ If the user incorrectly fills out the form they are prompted with a helpful error message and the form is discarded.
+ When the app is run the LoginManager is created.
+
+ ##### GAME
+ The game utilises an sqlite database that contains user data as well as the population data that the game draws from.
+ When the user accesses the game a query is run to obtain the data for all (top 100/500 for easy/normal difficulty) of the
+ city populations. This query results gets passed through python functions that splits it up into three arrays for
+ cities,countries,populations. These arrays are what are passed into the game where the rest is done through javascript.
+ A request form is also created when a user accesses the game. When the user posts their highscore it gets stored in this
+ form which is used to update the users highscore in the database. The leaderboards are routinely updated and constantly
+ show the top 5 scores for each difficulty which is managed through querying the top 5 scores in the database.
 
