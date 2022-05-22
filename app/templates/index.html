@@ -55,11 +55,13 @@
                 <button type="button" class="btn" id="login-button-small" onclick="show_login_popup()">LOGIN</button>
                 {% else %}
                 <button type="button" class="btn" id="login-button-small" onclick="window.location.href='{{ url_for('logout') }}'">LOGOUT</button>
-                <div style="color:white">
-                    <p>Your High Scores:</p>
-                    <p>Easy: {{current_user.high_score_easy }}</p>
-                    <p>Normal: {{current_user.high_score_normal }}</p>
-                    <p>Hard: {{current_user.high_score_hard }}</p>
+                <div>
+                    <div class="score_display"; >
+                        <p><b>Your High Scores:</b></p>
+                        <p><b>Easy: {{current_user.high_score_easy }}</b></p>
+                        <p><b>Normal: {{current_user.high_score_normal }}</b></p>
+                        <p><b>Hard: {{current_user.high_score_hard }}</b></p>
+                    </div>
                 </div>
                 {% endif %}
                 <div class="leader-board-table" id="leader-board-table-small">
