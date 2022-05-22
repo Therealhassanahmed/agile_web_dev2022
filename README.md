@@ -37,6 +37,10 @@ about.html contains information regarding the game/website/developers.
 There are 3 gaming templates, those being easy.html, normal.html, hard.hmtl.
 They all contains a version of the higher or lower game corresponding to difficulty.
 
+#SMALL-SCREENS#
+For changes when the screen is small (<700px), @media was used.
+This allowed for style changes to automatically change at the necessary screen size.
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Back-end descrtiption:
