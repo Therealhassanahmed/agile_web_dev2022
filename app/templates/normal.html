@@ -14,7 +14,8 @@
      <!-- icon for title bar -->
      <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/higher_lower_icon.png') }}">
 
-    <title>Document</title>
+     <title>Higher Or Lower Game</title>
+
     <script>
         var cities = {{cities()|tojson|safe}}
         var countries = {{countries()|tojson|safe}}
@@ -166,7 +167,7 @@
             }
             document.getElementById("score_display").innerHTML = "Session High Score: " + current.toString();
             document.getElementById("highscore").value = current;
-            if (current > {{current_user.high_score_easy}}) {
+            if (current > {{current_user.high_score_normal}}) {
                 document.getElementById("submit_score").removeAttribute("hidden");
             }
         }

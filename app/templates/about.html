@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- icon for title bar -->
     <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/higher_lower_icon.png') }}">
-    <title>about</title>
+    <title>Higher Or Lower Game</title>
     <style>
         h1 {text-align: center; color: white;}
         h4 {text-align: center; color: white;}
@@ -30,7 +30,7 @@
             <i class="fa fa-close" onclick="closeMenu()"></i>
             <li>
                 <!-- if you could please sort this button nik by changing the colour-->
-                <button class = "return_button" id= "r_btn" onclick="window.location.href='{{ url_for('index') }}';"> RETURN TO HOME</button>
+                <button onclick="window.location.href='{{ url_for('index') }}';"> RETURN TO HOME</button>
             </li>
         </div>
         <i class="fa fa-bars" onclick="showMenu()"></i>
