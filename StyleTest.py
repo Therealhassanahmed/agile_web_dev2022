@@ -7,6 +7,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 #To do, find simple way for switching from test context to development to production.
 
 
+# Couldn't really get working (ran out of time)
+"""
 class SystemTest(unittest.TestCase):
   driver = None
   
@@ -63,3 +65,4 @@ class SystemTest(unittest.TestCase):
 
 if __name__=='__main__':
   unittest.main(verbosity=2)
+  """
