@@ -1,6 +1,6 @@
 import unittest, os
 from app import app, db
-from app.models import User, Location
+from app.models import User
 
 class UserModelCase(unittest.TestCase):
 
@@ -10,8 +10,8 @@ class UserModelCase(unittest.TestCase):
         'sqlite:///'+os.path.join(basedir,'test.db')
     self.app = app.test_client()#creates a virtual test environment
     db.create_all()
-    s1 = User(id='00000000',username='Test',email="123@fake.com")
-    s2 = User(id='11111111',username='Unit',email="1234@fake.com")
+    s1 = User(id='0',username='Test',email="123@fake.com")
+    s2 = User(id='1',username='Unit',email="1234@fake.com")
     db.session.add(s1)
     db.session.add(s2)
     db.session.commit()
@@ -21,7 +21,7 @@ class UserModelCase(unittest.TestCase):
     db.drop_all()
 
   def test_password_hashing(self):
-    s = User.query.get('00000000')
+    s = User.query.get('0')
     s.set_password('test')
     self.assertFalse(s.check_password('case'))
     self.assertTrue(s.check_password('test'))
@@ -32,8 +32,10 @@ class UserModelCase(unittest.TestCase):
     self.assertEqual(response.status_code, 200)
 
   def test_default_score(self):
-    s = User.query.get('00000000')
+    s = User.query.get('0')
     self.assertTrue(s.high_score_easy == 0)
+    self.assertTrue(s.high_score_normal == 0)
+    self.assertTrue(s.high_score_hard == 0)
 
 
 
