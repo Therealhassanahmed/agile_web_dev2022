@@ -167,7 +167,7 @@
             }
             document.getElementById("score_display").innerHTML = "Session High Score: " + current.toString();
             document.getElementById("highscore").value = current;
-            if (current > {{current_user.high_score_easy}}) {
+            if (current > {{current_user.high_score_normal}}) {
                 document.getElementById("submit_score").removeAttribute("hidden");
             }
         }
